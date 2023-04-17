@@ -17,7 +17,11 @@
 
 /* SYSTEM INCLUDES */
 
-#include <cstdio>
+#include <assert.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <stdbool.h>
+#include <stdint.h>
 
 #ifndef CONTROLLER_STATES
 #define CONTROLLER_STATES
@@ -31,8 +35,6 @@
 #define PLAYER_2_DATA_PORT 0xA10005
 #define PLAYER_2_CONTROL_PORT 0xA1000B
 
-#define MEGA_DRIVE_INPUT (0 << 7)
-#define MEGA_DRIVE_PIN (0 << 7)
 
 #endif
 
@@ -45,9 +47,26 @@ typedef struct MEGA_DEVICE
 	typedef MEGA_DEVICE* GET_DEVICE_TYPE();
 };
 
+typedef struct MEGA_DRIVE_PIN
+{
+	typedef U32* COUNT;
+	typedef U8* PIN_1;
+	typedef U8* PIN_2;
+	typedef U8* PIN_3;
+	typedef U8* PIN_4;
+	typedef U8* PIN_5;
+	typedef U8* PIN_6;
+	typedef U8* PIN_7;
+	typedef U8* PIN_8;
+	typedef U8* PIN_9;
+};
+
 VOID_FUNCTION(MEGA_DRIVE_INIT);
 VOID_FUNCTION(MEGA_DRIVE_PIN_SIGNAL);
 VOID_FUNCTION(MEGA_DRIVE_NEXT_SIGNAL);
 VOID_FUNCTION(MEGA_DRIVE_CONNECTED);
+VOID_FUNCTION(MEGA_DRIVE_SET_PIN);
+VOID_FUNCTION(MEGA_DRIVE_SET_INPUT);
+VOID_FUNCTION(MEGA_DRIVE_UPDATE_INPUT);
 
 #endif 
